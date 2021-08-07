@@ -24,7 +24,7 @@ targetCompatibility = 1.6
 repositories {
     mavenCentral()
     maven {
-      url "https://plugins.gradle.org/m2/"
+        url "https://plugins.gradle.org/m2/"
     }
 }
 
@@ -55,7 +55,7 @@ artifacts {
 }
 
 //********* artifact signing *********
-if(gradle.startParameter.taskNames.contains("uploadArchives") || gradle.startParameter.taskNames.contains("publishPlugins")) {
+if (gradle.startParameter.taskNames.contains("uploadArchives") || gradle.startParameter.taskNames.contains("publishPlugins")) {
     signing {
         sign configurations.archives
     }

@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.github.rholder.gradle;
+package com.github.rholder.gradle
 
+import com.github.rholder.gradle.task.OneJar
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import com.github.rholder.gradle.task.OneJar
 
 /**
  * This plugin rolls up your current project's jar and all of its dependencies
@@ -54,10 +54,8 @@ import com.github.rholder.gradle.task.OneJar
  * <pre>
  * apply plugin: 'gradle-one-jar'
  *
- * task awesomeFunJar(type: OneJar) {
- *     mainClass = 'com.github.rholder.awesome.MyAwesomeMain'
- * }
- *
+ * task awesomeFunJar(type: OneJar) {*     mainClass = 'com.github.rholder.awesome.MyAwesomeMain'
+ *}*
  * </pre>
  */
 class GradleOneJarPlugin implements Plugin<Project> {
@@ -65,7 +63,7 @@ class GradleOneJarPlugin implements Plugin<Project> {
     // TODO test task lifecycle for sub-projects
     // TODO integrate external test project
     void apply(Project project) {
-        project.apply(plugin:'java')
+        project.apply(plugin: 'java')
         project.ext.OneJar = OneJar.class
     }
 }
