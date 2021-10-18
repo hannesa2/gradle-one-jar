@@ -2,6 +2,8 @@ plugins {
     id 'idea'
     id 'signing'
     id 'groovy'
+    id 'maven-publish'
+    id "com.gradle.plugin-publish" version "0.15.0"
 }
 
 group = 'com.github.onslip'
