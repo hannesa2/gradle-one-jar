@@ -15,8 +15,8 @@ def pluginDesc = 'The gradle-one-jar project is a Gradle plugin that uses One-JA
 def pluginHome = 'https://github.com/Onslip/gradle-one-jar/'
 def pluginRepo = 'https://github.com/Onslip/gradle-one-jar.git'
 
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
