@@ -2,6 +2,7 @@ plugins {
     id 'idea'
     id 'signing'
     id 'groovy'
+    id 'maven-publish'
 }
 
 repositories {
@@ -45,5 +46,15 @@ if (gradle.startParameter.taskNames.contains("uploadArchives") || gradle.startPa
 } else {
     task signArchives {
         // do nothing
+    }
+}
+
+project.afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+//                from components.release TODO this is wrong
+            }
+        }
     }
 }
