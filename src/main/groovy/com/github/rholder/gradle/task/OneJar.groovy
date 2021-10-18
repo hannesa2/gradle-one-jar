@@ -18,10 +18,10 @@ package com.github.rholder.gradle.task
 
 import com.github.rholder.gradle.util.Files
 import org.gradle.api.artifacts.Configuration
+import org.gradle.api.file.FileCollection
 import org.gradle.api.java.archives.Manifest
 import org.gradle.api.logging.Logger
 import org.gradle.api.tasks.bundling.Jar
-import org.gradle.api.file.FileCollection
 
 class OneJar extends Jar {
 
@@ -35,7 +35,7 @@ class OneJar extends Jar {
     boolean showExpand = false
     boolean confirmExpand = false
 
-    boolean noClassifier = false;
+    boolean noClassifier = false
 
     String mainClass
     File manifestFile
@@ -55,17 +55,17 @@ class OneJar extends Jar {
         description = "Create a One-JAR runnable archive from the current project using a given main Class."
 
         // use the main project jar if none is specified
-        if(!baseJar) {
+        if (!baseJar) {
             baseJar = project.tasks.jar
         }
 
         // use runtime configuration if none is specified
-        if(!targetConfiguration) {
+        if (!targetConfiguration) {
             targetConfiguration = project.configurations.runtime
         }
 
         // set standalone as classifier if unspecified
-        if(!noClassifier && (!classifier || classifier.isEmpty())) {
+        if (!noClassifier && (!classifier || classifier.isEmpty())) {
             classifier = 'standalone'
         }
 
@@ -95,7 +95,7 @@ class OneJar extends Jar {
             }
 
             // flatten everything specified in binLib to /binlib/*
-            if(binLib) {
+            if (binLib) {
                 binLib.each {
                     ant.copy(file: it,
                             todir: new File(oneJarBuildDir.absolutePath, "binlib"))
@@ -103,7 +103,7 @@ class OneJar extends Jar {
             }
 
             // copy binDir including sub-folders
-            if(binDir && binDir.isDirectory()) {
+            if (binDir && binDir.isDirectory()) {
                 logger.debug("Adding all additional binary files found in: " + binDir.absolutePath)
                 ant.copy(todir: new File(oneJarBuildDir.absolutePath, "binlib")) {
                     fileset(dir: binDir.absolutePath)
@@ -111,8 +111,8 @@ class OneJar extends Jar {
             }
 
             // copy everything from this dir over the top of the final archive
-            if(additionalDir) {
-                if(additionalDir.isDirectory()) {
+            if (additionalDir) {
+                if (additionalDir.isDirectory()) {
                     logger.debug("Adding all additional files found in: " + additionalDir.absolutePath)
                     ant.copy(todir: oneJarBuildDir.absolutePath) {
                         fileset(dir: additionalDir.absolutePath)
@@ -135,7 +135,7 @@ class OneJar extends Jar {
         oneJarBootFile.deleteOnExit()
         logger.debug("Extacting temporary boot file: " + oneJarBootFile.absolutePath)
 
-        if (oneJarConfiguration && oneJarConfiguration.dependencies.size() == 1){
+        if (oneJarConfiguration && oneJarConfiguration.dependencies.size() == 1) {
             def oneJarFile = oneJarConfiguration.singleFile
             logger.debug("Using one-jar-boot from dependency: ${oneJarFile}")
 
@@ -165,7 +165,7 @@ class OneJar extends Jar {
 
         // NOTE: if using your own custom manifest, you're responsible for adding entries for One-JAR boot
         File targetManifestFile
-        if(manifestFile) {
+        if (manifestFile) {
             logger.debug("Using custom manifest file: " + manifestFile.absolutePath)
             targetManifestFile = manifestFile
         } else {
@@ -188,7 +188,7 @@ class OneJar extends Jar {
     File writeOneJarManifestFile(Manifest manifest) {
         File manifestFile = File.createTempFile("one-jar-manifest", ".mf")
         manifestFile.deleteOnExit()
-        
+
         manifest.attributes.put("Main-Class", "com.simontuffs.onejar.Boot")
         manifest.attributes.put("One-Jar-Main-Class", mainClass)
         manifest.attributes.put("One-Jar-Show-Expand", showExpand)
