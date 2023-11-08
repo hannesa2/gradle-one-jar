@@ -49,12 +49,14 @@ if (gradle.startParameter.taskNames.contains("uploadArchives") || gradle.startPa
     }
 }
 
-project.afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-//                from components.release TODO this is wrong
-            }
+group = 'com.github.rholder.gradle'
+
+publishing {
+    publications {
+        release(MavenPublication) {
+//            afterEvaluate {
+//                from components.release
+//            }
         }
     }
 }
