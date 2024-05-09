@@ -65,9 +65,9 @@ class OneJar extends Jar {
         }
 
         // set standalone as classifier if unspecified
-        if (!noClassifier && (!classifier || classifier.isEmpty())) {
-            classifier = 'standalone'
-        }
+//        if (!noClassifier && (!classifier || classifier.isEmpty())) {
+//            classifier = 'standalone'
+//        }
 
         dependsOn = [baseJar]
 
