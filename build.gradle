@@ -17,12 +17,14 @@ dependencies {
     implementation localGroovy()
 }
 
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allSource
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = "sources"
 }
 
 task groovydocJar(type: Jar, dependsOn: 'groovydoc') {
     from groovydoc.destinationDir
+    archiveClassifier = 'javadoc'
 }
 
 task exportJavadoc(type: Copy, dependsOn: 'groovydoc') {
@@ -32,7 +34,7 @@ task exportJavadoc(type: Copy, dependsOn: 'groovydoc') {
 
 artifacts {
     archives jar
-    archives sourcesJar
+    archives sourceJar
     archives groovydocJar
 }
 
