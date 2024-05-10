@@ -21,6 +21,7 @@ import org.gradle.api.artifacts.Configuration
 import org.gradle.api.file.FileCollection
 import org.gradle.api.java.archives.Manifest
 import org.gradle.api.logging.Logger
+import org.gradle.api.provider.Property
 import org.gradle.api.tasks.bundling.Jar
 
 class OneJar extends Jar {
@@ -65,9 +66,9 @@ class OneJar extends Jar {
         }
 
         // set standalone as classifier if unspecified
-        if (!noClassifier && (!classifier || classifier.isEmpty())) {
-            classifier = 'standalone'
-        }
+//        if (!noClassifier && (!archiveClassifier || archiveClassifier.isEmpty())) {
+//            archiveClassifier = 'standalone' as Property<String>
+//        }
 
         dependsOn = [baseJar]
 
