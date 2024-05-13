@@ -22,7 +22,7 @@ jobs:
           distribution: 'adopt'
           java-version: ${{ matrix.java }}
       - uses: gradle/actions/wrapper-validation@v3.3.2
-      - uses: actions/cache@v4.0.0
+      - uses: actions/cache@v4.0.2
         with:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
