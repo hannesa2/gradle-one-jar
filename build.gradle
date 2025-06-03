@@ -1,8 +1,8 @@
 plugins {
-    id 'idea'
-    id 'signing'
-    id 'groovy'
-    id 'maven-publish'
+    id "idea"
+    id "signing"
+    id "groovy"
+    id "maven-publish"
 }
 
 repositories {
@@ -17,19 +17,21 @@ dependencies {
     implementation localGroovy()
 }
 
-task sourceJar(type: Jar) {
+tasks.register("sourceJar", Jar) {
     from sourceSets.main.allJava
     archiveClassifier = "sources"
 }
 
-task groovydocJar(type: Jar, dependsOn: 'groovydoc') {
+tasks.register("groovydocJar", Jar) {
+    dependsOn "groovydoc"
     from groovydoc.destinationDir
-    archiveClassifier = 'javadoc'
+    archiveClassifier = "javadoc"
 }
 
-task exportJavadoc(type: Copy, dependsOn: 'groovydoc') {
+tasks.register("exportJavadoc", Copy) {
+    dependsOn "groovydoc"
     from groovydoc.destinationDir
-    into 'javadoc'
+    into "javadoc"
 }
 
 artifacts {
@@ -44,12 +46,12 @@ if (gradle.startParameter.taskNames.contains("uploadArchives") || gradle.startPa
         sign configurations.archives
     }
 } else {
-    task signArchives {
+    tasks.register("signArchives") {
         // do nothing
     }
 }
 
-group = 'com.github.rholder.gradle'
+group = "com.github.rholder.gradle"
 
 publishing {
     publications {
