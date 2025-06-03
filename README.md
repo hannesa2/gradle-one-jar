@@ -318,10 +318,3 @@ built with this plugin are subject to the terms set forth
 The One-JAR license is a BSD-style license. Compliance with this license is
 assured by including the one-jar-license.txt file in the One-JAR archive, which
 this plugin does automatically.
-
-## Contributors
-
-* Jochen Schalanda (joschi)
-* Christian S. (squiddle)
-* Ben Manes (ben-manes)
-* Adam Walczak (walec51)
