@@ -1,7 +1,7 @@
 ## What is this?
 
 This plugin rolls up your current project's jar and all of its dependencies
-into the the layout expected by One-JAR, producing a single runnable
+into the layout expected by One-JAR, producing a single runnable
 fat-jar, similar to the following:
 
 ```txt
@@ -32,25 +32,15 @@ You can read more about the layout of a One-JAR archive from the official site
 ## Quick Start
 
 First, you'll want to add the plugin to your build, as in:
-
 ```groovy
-plugins {
-    id "com.github.onslip.gradle-one-jar" version "1.0.6"
-}
-```
-
-or
-
-```groovy
-
 apply plugin: 'gradle-one-jar'
 
 buildscript {
     repositories {
-        mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath 'com.github.onslip:gradle-one-jar:1.0.6'
+        classpath "com.github.hannesa2:gradle-one-jar:1.7"
     }
 }
 ```
