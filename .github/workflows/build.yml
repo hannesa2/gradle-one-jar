@@ -21,7 +21,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: ${{ matrix.java }}
-      - uses: gradle/actions/wrapper-validation@v5.0.0
+      - uses: gradle/actions/wrapper-validation@v6.4.0
       - uses: actions/cache@v6.1.0
         with:
           path: ~/.gradle/caches
